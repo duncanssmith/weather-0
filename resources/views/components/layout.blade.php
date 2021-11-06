@@ -34,5 +34,18 @@
                 </div>
             </main>
         </div>
+
+        <!-- Load React. -->
+        <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+        <!-- Load our React component. -->
+        <!-- <script src="like_button.js"></script> -->
+        <!-- <script src="weather.js"></script> -->
+        <script src="{{ asset('js/weather.js') }}" defer></script>
+        <script src="{{ asset('js/weather_0.js') }}" defer></script>
+        <script src="{{ asset('js/weather_1.js') }}" defer></script>
+
     </body>
 </html>

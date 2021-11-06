@@ -18,6 +18,11 @@
                     <x-nav-link :href="route('weather')" :active="request()->routeIs('weather')">
                         {{ __('Weather') }}
                     </x-nav-link>
+                    @auth
+                        <x-nav-link :href="route('insight')" :active="request()->routeIs('insight')">
+                            {{ __('Insight') }}
+                        </x-nav-link>
+                    @endauth
                 </div>
             </div>
 

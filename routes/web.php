@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\WeatherController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WeatherController;
+use App\Http\Controllers\InsightController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/* guest home */
 Route::get('/weather', [WeatherController::class, 'index'])->name('weather');
+
+Route::get('/insight', [WeatherController::class, 'insight'])->name('insight');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
