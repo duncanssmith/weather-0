@@ -14,11 +14,13 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
+            <!-- @auth -->
             @include('layouts.navigation')
+            <!-- @endauth -->
 
             <!-- Page Heading -->
             <header class="bg-white shadow">
@@ -40,12 +42,14 @@
         <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
         <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
 
-        <!-- Load our React component. -->
+        <!-- Load React component. -->
+        <!-- <div id="example"></div> -->
+        <!-- <script src="{{ mix('js/app.js') }}"></script> -->
         <!-- <script src="like_button.js"></script> -->
         <!-- <script src="weather.js"></script> -->
-        <script src="{{ asset('js/weather.js') }}" defer></script>
-        <script src="{{ asset('js/weather_0.js') }}" defer></script>
-        <script src="{{ asset('js/weather_1.js') }}" defer></script>
+        <!-- <script src="{{ asset('js/weather.js') }}" defer></script> -->
+        <!-- <script src="{{ asset('js/weather_0.js') }}" defer></script> -->
+        <!-- <script src="{{ asset('js/weather_1.js') }}" defer></script> -->
 
     </body>
 </html>

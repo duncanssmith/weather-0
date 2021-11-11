@@ -12,7 +12,6 @@ use App\Models\User;
 
 class WeatherController extends Controller
 {
-    const API_KEY = "786986c790691a6fe26c60fcd9fae106";
     const UNITS = 'metric'; // metric | standard | imperial
     const MODE = 'json'; // xml | json | default (json)
 
@@ -21,21 +20,27 @@ class WeatherController extends Controller
      */
     public function index()
     {
+        $apiKey = env('WEATHER_API_KEY');
+
         $user = auth()->user();
 
-        $url = $this->getWeatherData($user->location, self::MODE, self::UNITS, self::API_KEY);
+        $urlForecast = $this->getForecastWeatherData($user->location, self::MODE, self::UNITS, $apiKey);
+        $urlCurrent = $this->getCurrentWeatherData($user->location, self::MODE, self::UNITS, $apiKey);
+
+        session()->flash('success', 'Registered users can visit this page');
 
         return view('index', [
             'user' => $user,
             'title' => 'Weather',
-            'url' => $url,
+            'urlForecast' => $urlForecast,
+            'urlCurrent' => $urlCurrent,
         ]);
     }
 
     /**
      * @return Factory|View
      */
-    public function insight()
+    public function list_users()
     {
         $user = auth()->user();
 
@@ -49,15 +54,40 @@ class WeatherController extends Controller
 
         // dd($user);
 
+        session()->flash('success', 'Only Admins can visit this page');
+
         return view('users', [
             'users' => $users,
             'title' => 'Registered users',
         ]);
     }
 
-    public function getWeatherData($location, $mode, $units, $apiKey)
+    public function weather()
+    {
+        $apiKey = env('WEATHER_API_KEY');
+
+        $user = auth()->user();
+
+        $urlForecast = $this->getForecastWeatherData($user->location, self::MODE, self::UNITS, $apiKey);
+        $urlCurrent = $this->getCurrentWeatherData($user->location, self::MODE, self::UNITS, $apiKey);
+
+        return view('weather', [
+            'title' => 'Weather',
+            'urlForecast' => $urlForecast,
+            'urlCurrent' => $urlCurrent
+        ]);
+    }
+
+    public function getForecastWeatherData($location, $mode, $units, $apiKey)
     {
         $apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" . $location . "&mode=" . $mode . "&units=" . $units . "&appid=" . $apiKey;
+
+        return $apiUrl;
+    }
+
+    public function getCurrentWeatherData($location, $mode, $units, $apiKey)
+    {
+        $apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" . $location . "&mode=" . $mode . "&units=" . $units . "&appid=" . $apiKey;
 
         return $apiUrl;
     }

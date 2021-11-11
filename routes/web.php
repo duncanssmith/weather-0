@@ -19,9 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/weather', [WeatherController::class, 'index'])->name('weather');
+Route::get('/index', [WeatherController::class, 'index'])->name('index');
 
-Route::get('/insight', [WeatherController::class, 'insight'])->name('insight');
+Route::get('/weather', [WeatherController::class, 'weather'])->name('weather');
+
+Route::get('/list-users', [WeatherController::class, 'list_users'])->name('list-users')->middleware('admin');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
