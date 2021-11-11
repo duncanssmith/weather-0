@@ -1,3 +1,14 @@
+<hr>
+
+<h1>Duncan Smith - test task for 383</h1>
+
+<p>This is the Laravel component of the test project using the OpenWeatherMap.org weather data API.</p>
+
+<p>It is a Laravel 8 project.</p>
+
+<hr>
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
